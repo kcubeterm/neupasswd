@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <source src="/app.css" type="text/stylesheet">
+</head>
+<body>
+    <h1>neupasswd: In-Brain password manager </h1>
+    <form onsubmit="return false;" method="post" name="myForm">
+        <label>masterpass</label>
+        <input type="password" name="masterpass" id="mpass" /> </br>
+        <label for="">Service Name</label>
+        <input type="text" name="sevice" id="service"> <br>
+        <label for="">password length</label>
+        <input type="text" id="length" placeholder='12' list="lengthlist">
+        <datalist id="lengthlist">
+            <option value="12">
+            <option value="16">
+            <option value="20">
+            <option value="24">
+            <option value="30">
+        </datalist>
+        <input type="submit" name="submit" onclick="init()" />
+    </form>
+    <h3 id="result"></h3>
+    <div>
+
+        <h2>Instructions:-</h2>
+        <p>1. The first step is, create a master password in your brain. make sure that password must not easily predictable by anyone. so keep it unique. <br>
+        2. You can call that password "master password", now generate a new password for your any serivces. social media etc by simply filling the above box. <br>
+    3. Since the generated password is reproducible. you can always generate the same password later by simply giving the same master password and service name. but no one could generate the same password as long as you dont share your master password to anyone. this is why I call it in-Brain password manager.   </p>
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="/index.js"></script>
+</html>
