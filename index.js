@@ -2,11 +2,11 @@
 function init() {
     let masterpasswd = document.getElementById('mpass').value
     let service = document.getElementById('service').value
-    let passlength = document.getElementById('length').value | 12
+    let passlength = document.getElementById('length').value || 12
     let mHash = CryptoJS.SHA256(masterpasswd).toString()
     let sHash = CryptoJS.SHA256(service).toString()
     let salt = CryptoJS.SHA256(mHash+sHash).toString()
-    
+    console.log(passlength)
     let saltedpasswd = CryptoJS.SHA256(salt+salt.slice(23,29)).toString()
     document.getElementById('result').innerHTML = passGenerator(saltedpasswd,passlength)
 }
@@ -67,11 +67,11 @@ function passGenerator(saltedpasswd,passLength) {
     let specialToken = getTokenGen.getToken('special')
     let numberToken = getTokenGen.getToken('number')
     let pass = []
-    for (let i = 0; i < passLength; i++) {
+    for (let i = 0; i < saltedpasswd.length; i++) {
         pass.push(upperToken[i])
         pass.push(lowercaseToken[i])
         pass.push(numberToken[i])
         pass.push(specialToken[i])
     }
-    return pass.join('').slice(0,passLength-1)
+    return pass.slice(0,passLength).join('')
 }
