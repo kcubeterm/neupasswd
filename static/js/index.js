@@ -1,4 +1,3 @@
-
 function init() {
     let masterpasswd = document.getElementById('mpass').value
     let service = document.getElementById('service').value
@@ -8,6 +7,8 @@ function init() {
     let salt = CryptoJS.SHA256(mHash + sHash).toString()
     console.log(passlength)
     let saltedpasswd = CryptoJS.SHA256(salt + salt.slice(23, 29)).toString()
+    document.getElementById('canvas').style.display= "none"
+    document.getElementById('result').style.display = "block"
     document.getElementById('result').innerHTML = passGenerator(saltedpasswd, passlength)
 }
 
